@@ -1,0 +1,46 @@
+import sys
+
+from hypothesis import given, strategies
+from package_dev_utils.tests.args import cli_args, no_cli_args
+
+text_strategy = strategies.text()
+text_list_strategy = strategies.lists(text_strategy)
+text_arguments = given(arguments=text_list_strategy)
+
+
+@no_cli_args
+def test_no_cli_args_decorator() -> None:
+    assert sys.argv == []
+
+
+def test_no_cli_args_context_manager() -> None:
+    with no_cli_args:
+        assert sys.argv == []
+
+
+@cli_args()
+def test_cli_args_decorator() -> None:
+    assert sys.argv == []
+
+
+@text_arguments
+def test_cli_args_context_manager(arguments: list[str]) -> None:
+    with cli_args(*arguments):
+        assert sys.argv == arguments
+
+
+@text_arguments
+def test_combined_decorators(arguments: list[str]) -> None:
+    with cli_args(*arguments):
+        assert sys.argv == arguments
+    with no_cli_args:
+        assert sys.argv == []
+
+
+@no_cli_args
+@text_arguments
+def test_decorator_context_manager_combination(arguments: list[str]) -> None:
+    assert sys.argv == []
+    with cli_args(*arguments):
+        assert sys.argv == arguments
+    assert sys.argv == []
