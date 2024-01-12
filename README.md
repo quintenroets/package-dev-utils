@@ -11,8 +11,4 @@ package_dev_utils
 ```shell
 pip install package-dev-utils
 ```
-or
-```shell
-pip install git+https://github.com/quintenroets/package-dev-utils.git
-```
 make sure to use Python 3.10+
