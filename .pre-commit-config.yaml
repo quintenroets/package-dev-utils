@@ -28,9 +28,8 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies: [
-          "hypothesis",
-          "package-dev-utils",
-          "pytest-mypy-plugins",
+          "hypothesis >= 6.91, <7",
+          "pytest-mypy-plugins >= 3.0.0, <4",
         ]
   - repo: local
     hooks:

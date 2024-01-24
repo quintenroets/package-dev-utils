@@ -46,6 +46,16 @@ def test_decorator_context_manager_combination(arguments: list[str]) -> None:
     verify_no_cli_arguments()
 
 
+@given(argument=strategies.integers())
+def test_string_conversion(argument: int) -> None:
+    """
+    A lot of packages expect sys.argv values to be strings: e.g. typer, click, ...
+    """
+    with cli_args(argument):
+        for sys_argument in sys.argv:
+            assert isinstance(sys_argument, str)
+
+
 def verify_no_cli_arguments() -> None:
     assert extract_cli_arguments() == []
 
