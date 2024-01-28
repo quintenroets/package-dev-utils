@@ -1,5 +1,6 @@
 import functools
 import sys
+import typing
 from collections.abc import Callable
 from types import TracebackType
 from typing import Any, Protocol, TypeVar, cast
@@ -35,8 +36,11 @@ class CLIArgs:
     def __exit__(
         self,
         exception_type: type[BaseException] | None,
-        exception_value: BaseException | None,
+        exception: BaseException | None,
         traceback: TracebackType,
-    ) -> None:
-        if self.sys_args_patcher is not None:
-            self.sys_args_patcher.__exit__(exception_type, exception_value, traceback)
+    ) -> bool:
+        sys_args_patcher = typing.cast(Any, self.sys_args_patcher)
+        exception_handled = sys_args_patcher.__exit__(
+            exception_type, exception, traceback
+        )
+        return typing.cast(bool, exception_handled)
