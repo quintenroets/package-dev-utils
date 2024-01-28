@@ -37,7 +37,7 @@ class CLIArgs:
         self,
         exception_type: type[BaseException] | None,
         exception: BaseException | None,
-        traceback: TracebackType,
+        traceback: TracebackType | None,
     ) -> bool:
         sys_args_patcher = typing.cast(Any, self.sys_args_patcher)
         exception_handled = sys_args_patcher.__exit__(
