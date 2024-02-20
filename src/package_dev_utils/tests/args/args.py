@@ -15,7 +15,7 @@ class StrProtocol(Protocol):
 
 
 class CLIArgs:
-    def __init__(self, *args: StrProtocol):
+    def __init__(self, *args: StrProtocol) -> None:
         self.args: tuple[StrProtocol, ...] = args
         self.sys_args_patcher: Any | None = None
 
