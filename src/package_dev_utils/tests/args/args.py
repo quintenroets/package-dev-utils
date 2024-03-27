@@ -10,8 +10,7 @@ T = TypeVar("T", bound=Callable[..., Any])
 
 
 class StrProtocol(Protocol):
-    def __str__(self) -> str:
-        ...  # pragma: no cover
+    def __str__(self) -> str: ...
 
 
 class CLIArgs:
