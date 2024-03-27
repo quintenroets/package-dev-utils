@@ -5,21 +5,16 @@
 ![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
 
 ## Usage
-```python
-from package_dev_utils.tests.args import cli_args
 
-
-@cli_args("--debug")
-def test_debugging() -> None:
-    ...
-
-
-def test_authentication() -> None:
-    token = extract_token()
-    with cli_args("--token", token):
-        ...
+Run
+```shell
+package_dev_utils
 ```
 ## Installation
 ```shell
 pip install package-dev-utils
+```
+or
+```shell
+pip install git+https://github.com/quintenroets/package-dev-utils.git
 ```
