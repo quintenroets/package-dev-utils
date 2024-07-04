@@ -40,6 +40,8 @@ class CLIArgs:
     ) -> bool | None:
         sys_args_patcher = typing.cast(Any, self.sys_args_patcher)
         exception_handled = sys_args_patcher.__exit__(
-            exception_type, exception, traceback
+            exception_type,
+            exception,
+            traceback,
         )
         return typing.cast(bool, exception_handled)
