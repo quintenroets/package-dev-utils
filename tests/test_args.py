@@ -1,6 +1,7 @@
 import sys
 
 from hypothesis import given, strategies
+
 from package_dev_utils.tests.args import cli_args, no_cli_args
 
 text_strategy = strategies.text()
