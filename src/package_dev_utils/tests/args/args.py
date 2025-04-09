@@ -24,7 +24,7 @@ class CLIArgs:
             with self:
                 return function(*func_args, **func_kwargs)
 
-        return cast(T, args_wrapper)
+        return cast("T", args_wrapper)
 
     def __enter__(self) -> None:
         str_args = (str(arg) for arg in self.args)
@@ -38,10 +38,10 @@ class CLIArgs:
         exception: BaseException | None,
         traceback: TracebackType | None,
     ) -> bool | None:
-        sys_args_patcher = typing.cast(Any, self.sys_args_patcher)
+        sys_args_patcher = typing.cast("Any", self.sys_args_patcher)
         exception_handled = sys_args_patcher.__exit__(
             exception_type,
             exception,
             traceback,
         )
-        return typing.cast(bool, exception_handled)
+        return typing.cast("bool", exception_handled)
