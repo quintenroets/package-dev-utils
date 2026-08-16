@@ -11,8 +11,7 @@ from package_dev_utils.tests.args import cli_args
 
 
 @cli_args("--debug")
-def test_debugging() -> None:
-    ...
+def test_debugging() -> None: ...
 
 
 def test_authentication() -> None:
